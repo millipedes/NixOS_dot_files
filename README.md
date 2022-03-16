@@ -1,8 +1,7 @@
 # :star2:
-This is a collection of my dot files. I am attempting to make the process of
-installing this collection of files as easy as possible and will likely write
-some scripts to assist in the process, but for now all I have is a list of
-entrys to be edited.
+This is the collection of files that I use to make my NixOS machine what it is.
+These are the dot files for several Programs on my system (to include the system
+configuration itself).
 
 ## :scroll:
 1) Change hardware configuration path (likely no change necessary for most
