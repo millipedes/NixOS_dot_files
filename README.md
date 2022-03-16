@@ -8,7 +8,7 @@ configuration itself).
 Some of the files in this collection have been used from the EndevourOS system.
 They are all of the files that are under the `i3/scripts/` directory
 (I partially based my i3 config and i3blocks config off of their default
-connfiguration file also).
+connfiguration file also).  Also the whole rofi config.
 
 Additionally, large sections of my neovim configuration are based off the code
 presented in the set of videos made by chris@machine's YouTube Video series
