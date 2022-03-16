@@ -1,0 +1,154 @@
+## Main
+# main
+snippet main
+	int main(int argc, char *argv[]) {
+		${0}
+		return 0;
+	}
+# main(void)
+snippet mainn
+	int main(void) {
+		${0}
+		return 0;
+	}
+##
+## Preprocessor
+# #include <...>
+snippet inc
+	#include <${1:stdio}.h>
+# #include "..."
+snippet Inc
+	#include "${1:`vim_snippets#Filename("$1.h")`}"
+# ifndef...define...endif
+snippet ndef
+	#ifndef $1
+	#define ${1:SYMBOL} ${2:value}
+	#endif /* ifndef $1 */
+# define
+snippet def
+	#define
+# ifdef...endif
+snippet ifdef
+	#ifdef ${1:FOO}
+		${2:#define }
+	#endif
+# if
+snippet #if
+	#if ${1:FOO}
+		${0:${VISUAL}}
+	#endif
+# header include guard
+#
+## Control Statements
+# if
+snippet if
+	if (${1:true}) {
+		${0:${VISUAL}}
+	}
+snippet ife
+	if (${1:true}) {
+		${2:${VISUAL}}
+	} else {
+		${0}
+	}
+# else
+snippet el
+	else {
+		${0:${VISUAL}}
+	}
+# else if
+snippet elif
+	else if (${1:true}) {
+		${0:${VISUAL}}
+	}
+# ternary
+snippet t
+	${1:/* condition */} ? ${2:a} : ${3:b}
+# switch
+snippet switch
+	switch (${1:/* variable */}) {
+		case :
+			break;
+		default:
+			break;
+	}
+# case
+snippet case
+	case ${1:/* variable case */}:
+		${2}
+		${3:break;}
+snippet ret
+	return ${0};
+##
+## Loops
+# for
+snippet for
+	for(int i = 0; i < count; i++) {
+		
+	}
+# while
+snippet wh
+	while (${1:/* condition */}) {
+		${0:${VISUAL}}
+	}
+# do... while
+snippet do
+	do {
+		${0:${VISUAL}}
+	} while (${1:/* condition */});
+##
+## Functions
+# function definition
+snippet fun
+	${1:void} ${2:function_name}(${3})
+	{
+		${4}
+	}
+# function definition with zero parameters
+snippet fun0
+	${1:void} ${2:function_name}()
+	{
+		${3}
+	}
+## Input/Output
+# printf
+snippet pr
+	printf("${1:%s}\n"${2});
+# fprintf (again, this isn't as nice as TextMate's version, but it works)
+snippet fpr
+	fprintf(${1:stderr}, "${2:%s}\n"${3});
+
+## Dynamic Allocation
+snippet mlc
+	${1:ptr} = (${2:type}*) malloc(sizeof($2));
+
+snippet clc
+	${1:ptr} = (${2:type}*) calloc(${3:size}, sizeof($2));
+
+snippet rlc
+	${1:ptr} = realloc($1, ${2:size} * sizeof(${3:type}));
+
+snippet mlcd
+	${1:type} ${2:ptr} = ($1*) malloc(sizeof($1));
+
+snippet clcd
+	${1:type} ${2:ptr} = ($1*) calloc(${3:size}, sizeof($1));
+
+snippet fre
+	free(${1:ptr});
+## Like docblokr but not stupid
+snippet /**
+	/**
+	 * ${1}
+	 * @param
+	 * @return
+	 */
+snippet /***
+	/**
+	 * @file ${1}
+	 * @brief
+	 * @author Matthew C. Lindeman
+	 * @date
+	 * @bug None known
+	 * @todo Nothing atm
+	 */

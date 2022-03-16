@@ -6,7 +6,7 @@ configuration itself).
 
 ## Some Credits
 Some of the files in this collection have been used from the EndevourOS system.
-They are all of the files that are under the i3 scripts (additionally, I
+They are all of the files that are under the `i3/scripts` (additionally, I
 partially based my i3 config and i3blocks config off of their default
 configuration file).
 
