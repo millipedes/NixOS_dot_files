@@ -1,23 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 {
   imports =
-    [ ###############################
-      # PUT YOUR HARDWARE PATH HERE #
-      ###############################
-      ./hardware-configuration.nix
-    ];
+  [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-  #########################################
-  # Double check your bios to make sure   #
-  # you are booting off EFI, please see   #
-  # NixOS Docs!! This may make other      #
-  # systems non-bootable                  #
-  # Use the systemd-boot EFI boot loader. #
-  #########################################
+  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth.enable = true;
@@ -26,23 +14,25 @@
   time.timeZone = "America/Denver";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false
-  # here. Per-interface useDHCP will be mandatory in the future, so this
-  # generated config replicates the default behaviour.
+  # here.
+  # Per-interface useDHCP will be mandatory in the future, so this generated
+  # config replicates the default behaviour.
   networking.useDHCP = false;
-  
-  ##############################################################
-  # Use the command `$ ip link` and put your wifi device below #
-  ##############################################################
-  #networking.interfaces.YOURINTERFACEHERE.useDHCP = true;
+  networking.interfaces.wlp2s0.useDHCP = true;
+
+  # Enable NetworkManager service
   networking.networkmanager.enable = true;
+
+  # Enable udev power service
   services.upower.enable = true;
 
-  # Enable the X11 windowing system.
+  # Enable the X11 Windowing System.
   services.xserver.enable = true;
   
   # Optimize the store automatically
   nix.autoOptimiseStore = true;
 
+  # Set i3 as WM
   services.xserver.windowManager.i3.enable = true;
   services.xserver.windowManager.i3.package = pkgs.i3-gaps;
 
@@ -50,122 +40,96 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
 
-  ############################################################################
-  # Put your user here, wheel group = super user privledges (i.e. sudo) and  #
-  # networkmanager group = allowance to start/stop service with this user    #
-  # It would be okay to fill this entry with an already existing user (provided
-  # you are okay with that user only being in those groups and is a normal user)
-  ############################################################################
-  # users.users.YOURUSERHERE = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" "networkmanager" ];
-  # };
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.knd = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+  };
 
-
-  ##############################################################################
-  # Check these packages, I have many that I think the average user may not be #
-  # interesed in (i.e. the full latex library                                  #
-  ##############################################################################
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
   environment.systemPackages = with pkgs;
   let
+    # My R packages
     R-custom = rWrapper.override{
       packages = with rPackages; [
-	ggplot2
-	pracma
+        ggplot2
+        pracma
+        base64
       ];
     };
-    in
+  in
   [
-     wget
-     firefox
-     kitty
-     rofi
-     i3blocks
-     scrot
-     sl
-     rPackages.base64
-     picom
-     networkmanagerapplet
-     neofetch
-     lolcat
-     jdk11
-     i3lock
-     i3-gaps
-     git
-     gcc
-     ghc
-     feh
-     htop
-     arandr
-     xclip
-     python38
-     python38Packages.pynvim
-     neovim
-     ##
-     # From EOS scrips
-     perl
-     lm_sensors
-     pamixer
-     sysstat
-     upower
-     pavucontrol
-     ##
-     # Random Stuff, mostly languages
-     gnumake
-     lxappearance
-     valgrind
-     gdb
-     imagemagick
-     lua
-     texlive.combined.scheme-full
-     evince
-     tesseract # okay OCR super easy to use tho
-     ##
-     # Stuff for kernel project
-     #flex
-     #bison
-     #pahole
-     #util-linux
-     #pkg-config
-     #bc
-     #openssl
-     #reiserfsprogs
-     #squashfs-tools-ng
-     #docker
-     blender
-     transmission
-     transmission-gtk
-     octave
-     ## R Stuff
-     R-custom
-     #
-     unzip
-     parted
-     # btop # would have installed over htop, but doesn't play nice w/ compositor
-     asciiquarium
-     tty-clock
+     arandr                       # Graphical Interface for xrandr
+     asciiquarium                 # A Neat asciiquarium
+     blender                      # 3d Python Development GUI
+     evince                       # PDF Reader
+     feh                          # Image Veiwer
+     firefox                      # Web Browser
+     fpc                          # Free Pascal Compiler
+     git                          # github.com API
+     gcc                          # General C Compiler
+     ghc                          # General Haskell Compiler
+     gdb                          # General C Debugger
+     gnumake                      # Makefile
+     htop                         # System Resource Monitoring via Terminal
+     i3-gaps                      # Window Manager
+     i3blocks                     # Bar for Window Manager
+     i3lock                       # Lock Screen Application for i3
+     imagemagick                  # Image Tool, I use for Blurring
+     jdk11                        # Open JDK 11
+     kitty                        # Terminal Emulator
+     lm_sensors                   # Aids in System Scripts to Get Sevrice info
+     lolcat                       # Adds Color to the Inputted Text
+     lua                          # Lua Programming Language
+     lxappearance                 # Manages Some GTK Interactions (Icons etc.)
+     neofetch                     # Display System Info/Logo
+     libreoffice                  # Office Suit
+     neovim                       # Best Text Editor
+     networkmanagerapplet         # Network Manager GUI
+     octave                       # Octave
+     parted                       # Disk Partitioner
+     pamixer                      # Audio Control Stuff
+     pavucontrol                  # Audio Control Stuff
+     perl                         # Perl Programming Language
+     picom                        # Compositor
+     python38                     # Python 3.8
+     python38Packages.pynvim      # Python Package Required for neovim
+     R-custom                     # R With Specified Packages
+     rofi                         # Application Launching Menu Tool
+     scrot                        # Screen Capturing Tool (Screenshots etc.)
+     sl                           # Encourage Precision/Toxicity ;)
+     stack                        # Haskell Build Tool
+     sysstat                      # System Information
+     tesseract                    # OCR Engine
+     texlive.combined.scheme-full # All of Latex
+     transmission                 # Torrenting Backend
+     transmission-gtk             # Torrenting Frontend
+     tty-clock                    # Terminal Clock
+     unzip                        # Unzip Files
+     upower                       # Part of udev Used for Reading Power
+     valgrind                     # Memory Management Tool for C
+     wget                         # FTP Tool
+     xclip                        # Patch for Clipboard Across X Programs
    ];
 
+  # System Fonts
   fonts.fonts = with pkgs; [
-    powerline-fonts
-    fira-code
-    rPackages.fontawesome
+    powerline-fonts               # Neovim etc.
+    fira-code                     # Most Stuff (kitty, GTK, etc.)
+    font-awesome                  # Something on the System
   ];
 
   services.xserver.videoDrivers = [ "modsetting" ];
   services.xserver.useGlamor = true;
 
-  # Touchpad for laptop
+  # TOUCHPAD
   services.xserver.libinput.enable = true;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }
-
