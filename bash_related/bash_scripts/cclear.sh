@@ -1,0 +1,4 @@
+cclear() {
+	clear
+	clear
+}

@@ -1,0 +1,154 @@
+# Define Font for the System
+font pango:Fira Code Regular 10
+
+# Set the mod Key to the Windows Key:
+set $mod Mod4
+
+# Default i3 Tiling Mode:
+workspace_layout default
+
+# Border Indicator on Windows:
+new_window pixel 1
+
+# Set Inner/Outer gaps
+gaps inner 6
+gaps outer 3
+
+# Switch to Workspace
+bindsym $mod+z    workspace  $ws1
+bindsym $mod+x    workspace  $ws2
+bindsym $mod+c    workspace  $ws3
+bindsym $mod+v    workspace  $ws4
+bindsym $mod+b    workspace  $ws5
+bindsym $mod+n    workspace  $ws6
+
+# Move Focused Container to Workspace
+bindsym $mod+Shift+z    move container to workspace  $ws1
+bindsym $mod+Shift+x    move container to workspace  $ws2
+bindsym $mod+Shift+c    move container to workspace  $ws3
+bindsym $mod+Shift+v    move container to workspace  $ws4
+bindsym $mod+Shift+b    move container to workspace  $ws5
+bindsym $mod+Shift+n    move container to workspace  $ws6
+
+# Start a Terminal Emulator
+bindsym $mod+Return exec kitty
+
+# Kill Focused Window
+bindsym $mod+q kill
+
+# Exit-Menu
+bindsym $mod+Shift+e exec shutdown -P now
+
+# Lock by Blurring the Screen (A Script I Borrowed from EnevourOS)
+bindsym $mod+l exec ~/.config/i3/scripts/blur-lock.sh
+
+# Restart i3 Inplace
+bindsym $mod+Shift+r restart
+
+# Backlight control
+bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessDown exec xbacklight -10
+
+# Change Focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move Focused Window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Volume Keys
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill     \
+  -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill     \
+  -RTMIN+1 i3blocks
+
+# gradular volume control
+bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill\
+  -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill\
+  -RTMIN+1 i3blocks
+
+# Mute
+bindsym XF86AudioMute exec pamixer -t && notify-send                           \
+  "mute: $(pamixer --get-mute)"
+
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Redirect sound to headphones
+bindsym $mod+p exec /usr/local/bin/switch-audio-port
+
+# Define Names for Default Workspaces
+set $ws1 ""
+set $ws2 ""
+set $ws3 ""
+set $ws4 ""
+set $ws5 ""
+set $ws6 ""
+
+# Start Compositor on Startup
+exec --no-startup-id picom -Gb
+
+# Start networkmanager-applet on Startup
+exec --no-startup-id nm-applet
+
+# Set Wallpaper
+exec --no-startup-id feh --bg-fill ~/Pictures/mountains.jpg
+
+# Define colors variables:
+set $darkbluetrans		#08052be6
+set $darkblue			    #08052b
+set $lightblue			  #5294e2
+set $urgentred			  #e53935
+set $white				    #ffffff
+set $black				    #000000
+set $bestblue			    #002342
+set $darkgrey			    #383c4a
+set $grey				      #b0b5bd
+set $yellowbrown		  #e1b700
+set $mediumgrey			  #8b8b8b
+
+# define colors for windows:
+#class		        	    border		  bground		  text	 indicator	child_border
+client.focused		      $lightblue	$darkblue	  $white $bestblue	$mediumgrey
+client.unfocused	      $darkblue	  $darkblue	  $grey	 $bestblue	$darkgrey
+client.focused_inactive	$darkblue	  $darkblue	  $grey	 $bestblue	$black
+client.urgent		        $urgentred	$urgentred	$white $bestblue	$yellowbrown
+
+
+# Eigengrau
+set $base01 #16161d
+# RTJ RED
+set $base03 #40e0d0
+# LIGHT BLUE
+set $base06 #14425a
+
+bar {
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  colors {
+    separator $base01
+    background $base01
+    statusline $base05
+    #                     border 	  background text
+    focused_workspace 	  $base01 	$base01 	 $base03
+    active_workspace 	    $base01 	$base01 	 $base06
+    inactive_workspace 	  $base01 	$base01 	 $base06
+    urgent_workspace 	    $base01 	$base01 	 $base03
+  }
+  position top
+}
+
+## rofi bindings fancy application menu (two bindings F9/$mod+d)
+bindsym $mod+d exec rofi -dpi 180 -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
+
+## rofi bindings for window menu (two bindings F10/$mod+t)
+bindsym $mod+t exec rofi -show window \
+		-config ~/.config/rofi/rofidmenu.rasi
