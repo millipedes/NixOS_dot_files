@@ -102,6 +102,10 @@ exec --no-startup-id nm-applet
 # Set Wallpaper
 exec --no-startup-id feh --bg-fill ~/Pictures/mountains.jpg
 
+# Make sure the popups aren't massive
+floating_minimum_size 75   x 50
+floating_maximum_size 1500 x 1000
+
 # Define colors variables:
 set $darkbluetrans		#08052be6
 set $darkblue			    #08052b
