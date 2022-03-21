@@ -22,6 +22,7 @@ alias vvle='sl -aF'									# encourage toxicity
 alias vvl='sl -l'									  # encourage toxicity
 alias vvlr='sl -l'									# encourage toxicity
 alias ssh='TERM=xterm-256color ssh'
+alias fpc='fpc -gv'
 
 [[ "$(whoami)" = "root" ]] && return
 
@@ -30,13 +31,18 @@ alias ssh='TERM=xterm-256color ssh'
 
 #---------------------------------------------------------------
 # My custom bash scripts:
-source ~/.config/bash_scripts/cclear.sh
-source ~/.config/bash_scripts/cdc.sh
-source ~/.config/bash_scripts/c_project.sh
-source ~/.config/bash_scripts/c_object.sh
-source ~/.config/bash_scripts/simple_latex.sh
-source ~/.config/bash_scripts/fsystemmount.sh
+source ~/.config/bash_scripts/functions/cclear.sh
+source ~/.config/bash_scripts/functions/cdc.sh
+source ~/.config/bash_scripts/functions/c_project.sh
+source ~/.config/bash_scripts/functions/c_object.sh
+source ~/.config/bash_scripts/functions/simple_latex.sh
 #---------------------------------------------------------------
+
+readonly LIN=/home/knd/Documents/nmt/2021-2022/semester2/math454/
+readonly STO=/home/knd/Documents/nmt/2021-2022/semester2/math486/
+readonly AOS=/home/knd/Documents/nmt/2021-2022/semester2/cse489/
+readonly ARC=/home/knd/Documents/nmt/2021-2022/semester2/cse331/
+readonly SE=/home/knd/Documents/nmt/2021-2022/semester2/cse326/
 
 # My C program for Easy Loading Terminal Art
 /home/knd/.config/rice-terminal/terminal_startup_rice \
