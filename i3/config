@@ -1,5 +1,6 @@
 # Define Font for the System
-font pango:Fira Code Regular 10
+font pango:FiraMono Nerd Font 10
+
 
 # Set the mod Key to the Windows Key:
 set $mod Mod4
@@ -86,12 +87,12 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 # Define Names for Default Workspaces
-set $ws1 ""
-set $ws2 ""
-set $ws3 ""
-set $ws4 ""
-set $ws5 ""
-set $ws6 ""
+set $ws1 ""
+set $ws2 ""
+set $ws3 "爵"
+set $ws4 ""
+set $ws5 "ﲤ"
+set $ws6 ""
 
 # Start Compositor on Startup
 exec --no-startup-id picom -Gb
