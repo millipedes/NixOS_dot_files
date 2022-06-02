@@ -1,7 +1,6 @@
 # Define Font for the System
 font pango:FiraMono Nerd Font 10
 
-
 # Set the mod Key to the Windows Key:
 set $mod Mod4
 
@@ -9,7 +8,7 @@ set $mod Mod4
 workspace_layout default
 
 # Border Indicator on Windows:
-new_window pixel 1
+new_window pixel 3
 
 # Set Inner/Outer gaps
 gaps inner 6
@@ -19,17 +18,17 @@ gaps outer 3
 bindsym $mod+z    workspace  $ws1
 bindsym $mod+x    workspace  $ws2
 bindsym $mod+c    workspace  $ws3
-bindsym $mod+v    workspace  $ws4
-bindsym $mod+b    workspace  $ws5
-bindsym $mod+n    workspace  $ws6
+bindsym $mod+a    workspace  $ws4
+bindsym $mod+s    workspace  $ws5
+bindsym $mod+d    workspace  $ws6
 
 # Move Focused Container to Workspace
 bindsym $mod+Shift+z    move container to workspace  $ws1
 bindsym $mod+Shift+x    move container to workspace  $ws2
 bindsym $mod+Shift+c    move container to workspace  $ws3
-bindsym $mod+Shift+v    move container to workspace  $ws4
-bindsym $mod+Shift+b    move container to workspace  $ws5
-bindsym $mod+Shift+n    move container to workspace  $ws6
+bindsym $mod+Shift+a    move container to workspace  $ws4
+bindsym $mod+Shift+s    move container to workspace  $ws5
+bindsym $mod+Shift+d    move container to workspace  $ws6
 
 # Start a Terminal Emulator
 bindsym $mod+Return exec kitty
@@ -45,6 +44,10 @@ bindsym $mod+l exec ~/.config/i3/scripts/blur-lock.sh
 
 # Restart i3 Inplace
 bindsym $mod+Shift+r restart
+
+bindsym $mod+w exec firefox
+
+bindsym $mod+e exec blender
 
 # Backlight control
 bindsym XF86MonBrightnessUp exec xbacklight +10
@@ -101,57 +104,46 @@ exec --no-startup-id picom -Gb
 exec --no-startup-id nm-applet
 
 # Set Wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/mountains.jpg
+exec --no-startup-id feh --bg-fill --randomize ~/Pictures/UG*
 
-# Make sure the popups aren't massive
-floating_minimum_size 75   x 50
-floating_maximum_size 1500 x 1000
+floating_modifier Mod4
 
-# Define colors variables:
-set $darkbluetrans		#08052be6
-set $darkblue			    #08052b
-set $lightblue			  #5294e2
-set $urgentred			  #e53935
-set $white				    #ffffff
-set $black				    #000000
-set $bestblue			    #002342
-set $darkgrey			    #383c4a
-set $grey				      #b0b5bd
-set $yellowbrown		  #e1b700
-set $mediumgrey			  #8b8b8b
+set $darkblue  #08052b
+set $lightblue #5294e2
+set $white     #ffffff
+set $mint      #0d4d2e
+set $teal      #03c0c1
+set $grey      #b0b5bd
+set $urgentred #e53935
+set $lightmint #3eb489
+set $greyblue  #14425a
+set $void      #000000
 
 # define colors for windows:
-#class		        	    border		  bground		  text	 indicator	child_border
-client.focused		      $lightblue	$darkblue	  $white $bestblue	$mediumgrey
-client.unfocused	      $darkblue	  $darkblue	  $grey	 $bestblue	$darkgrey
-client.focused_inactive	$darkblue	  $darkblue	  $grey	 $bestblue	$black
-client.urgent		        $urgentred	$urgentred	$white $bestblue	$yellowbrown
-
-
-# Eigengrau
-set $base01 #16161d
-# RTJ RED
-set $base03 #40e0d0
-# LIGHT BLUE
-set $base06 #14425a
+#class                  border     bground    text   indicator child_border
+client.focused          $lightblue $darkblue  $white $teal     $teal
+client.unfocused        $darkblue  $darkblue  $grey  $mint     $mint
+client.focused_inactive $darkblue  $darkblue  $grey  $mint     $mint
+client.urgent           $urgentred $urgentred $white $mint     $mint
 
 bar {
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   colors {
-    separator $base01
-    background $base01
+    separator $void
+    background $void
+    # background $void
     statusline $base05
     #                     border 	  background text
-    focused_workspace 	  $base01 	$base01 	 $base03
-    active_workspace 	    $base01 	$base01 	 $base06
-    inactive_workspace 	  $base01 	$base01 	 $base06
-    urgent_workspace 	    $base01 	$base01 	 $base03
+    focused_workspace 	  $void 	$void 	 $lightmint
+    active_workspace 	    $void 	$void 	 $greyblue
+    inactive_workspace 	  $void 	$void 	 $mint
+    urgent_workspace 	    $void 	$void 	 $lightmint
   }
   position top
 }
 
 ## rofi bindings fancy application menu (two bindings F9/$mod+d)
-bindsym $mod+d exec rofi -dpi 180 -modi drun -show drun \
+bindsym $mod+space exec rofi -dpi 180 -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings for window menu (two bindings F10/$mod+t)
