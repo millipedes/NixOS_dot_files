@@ -90,12 +90,12 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 # Define Names for Default Workspaces
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: ﲤ"
-set $ws6 "6: "
+set $ws1 ""
+set $ws2 ""
+set $ws3 "爵"
+set $ws4 ""
+set $ws5 "ﲤ"
+set $ws6 ""
 
 # Start Compositor on Startup
 exec --no-startup-id picom -Gb
@@ -108,41 +108,57 @@ exec --no-startup-id feh --bg-fill --randomize ~/Pictures/UG*
 
 floating_modifier Mod4
 
-set $darkblue  #08052b
-set $lightblue #5294e2
-set $white     #ffffff
-set $mint      #0d4d2e
-set $teal      #03c0c1
-set $grey      #b0b5bd
-set $urgentred #e53935
-set $lightmint #3eb489
-set $greyblue  #14425a
-set $void      #000000
-set $eigengrau #16161d
-set $atomblue  #002342
+set $darkblue			    #08052b
+set $lightblue			  #5294e2
+set $white				    #ffffff
+set $mint        #0d4d2e
+set $teal        #03c0c1
+set $grey				      #b0b5bd
+set $urgentred			  #e53935
+# Define colors variables:
+# set $darkbluetrans		#08052b
+# set $black				    #000000
+# set $bestblue			    #002342
+# set $darkgrey			    #383c4a
+# set $yellowbrown		  #e1b700
+# set $mediumgrey			  #8b8b8b
 
 # define colors for windows:
-#class                  border     bground    text   indicator child_border
-client.focused          $lightblue $darkblue  $white $teal     $teal
-client.unfocused        $darkblue  $darkblue  $grey  $mint     $mint
-client.focused_inactive $darkblue  $darkblue  $grey  $mint     $mint
-client.urgent           $urgentred $urgentred $white $mint     $mint
+#class		        	    border		  bground		  text	 indicator	child_border
+client.focused		      $lightblue	$darkblue	  $white $teal $teal
+client.unfocused	      $darkblue	  $darkblue	  $grey	 $mint $mint
+client.focused_inactive	$darkblue	  $darkblue	  $grey	 $mint $mint
+client.urgent		        $urgentred	$urgentred	$white $mint $mint
+
+
+# Eigengrau
+set $base01 #16161d
+# RTJ RED
+set $base03 #3eb489
+# LIGHT BLUE
+set $base06 #14425a
+set $void #000000
 
 bar {
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   colors {
-    separator  $void
+    separator $void
     background $void
+    # background $void
     statusline $base05
-    #name              border    background text
-    focused_workspace  $teal      $eigengrau $lightmint
-    active_workspace   $void      $void      $mint
-    inactive_workspace $void      $void      $mint
-    urgent_workspace   $void      $eigengrau $lightmint
+    #                     border 	  background text
+    focused_workspace 	  $void 	$void 	 $base03
+    active_workspace 	    $void 	$void 	 $base06
+    inactive_workspace 	  $void 	$void 	 $mint
+    urgent_workspace 	    $void 	$void 	 $base03
   }
   position top
 }
 
 ## rofi bindings fancy application menu (two bindings F9/$mod+d)
 bindsym $mod+space exec rofi -dpi 180 -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
+
+## rofi bindings for window menu (two bindings F10/$mod+t)
+bindsym $mod+t exec rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
