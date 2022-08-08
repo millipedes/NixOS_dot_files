@@ -101,13 +101,14 @@
      arandr                       # Graphical Interface for xrandr
      asciiquarium                 # A Neat asciiquarium
      binutils                     # I think this is 32 bit toolchain
+     bison                        # Parser Generator
+     cargo                        # Rust Build Tool
      evince                       # PDF Reader
      feh                          # Image Veiwer
      firefox                      # Web Browser
-     fpc                          # Free Pascal Compiler
+     flex                         # Lexical Analyzer Generator
      git                          # github.com API
      gcc                          # General C Compiler
-     ghc                          # General Haskell Compiler
      gdb                          # General C Debugger
      gnumake                      # Makefile
      gnuplot                      # Command Line Plotting Tool
@@ -132,27 +133,27 @@
      ncurses                      # C library requires shell env on Nix
      unstable.neovim              # Best Text Editor
      networkmanagerapplet         # Network Manager GUI
-     ocaml                        # Ocaml interpreter
+     ocaml                        # ocaml interpreter
      octave                       # Octave
      openscad                     # For .stl files (3d printing)
+     pari                         # Scientific C Library/Extension/Lang
      parted                       # Disk Partitioner
      pamixer                      # Audio Control Stuff
      pavucontrol                  # Audio Control Stuff
      perl                         # Perl Programming Language
      picom                        # Compositor
      plantuml                     # UML maker from scripting language
-     python38                     # Python 3.8
-     python38Packages.pynvim      # Python Package Required for neovim
+     python39                     # Python 3.8
+     python39Packages.pynvim      # Python Package Required for neovim
      qemu                         # ISO virtualizer
      R-custom                     # R With Specified Packages
+     ruby                         # Very Fun Programming Language
+     rustc                        # Rust compiler
      rofi                         # Application Launching Menu Tool
      scrot                        # Screen Capturing Tool (Screenshots etc.)
      sl                           # Encourage Precision/Toxicity ;)
-     stack                        # Haskell Build Tool
      sysstat                      # System Information
      texlive.combined.scheme-full # All of Latex
-     transmission                 # Torrenting Backend
-     transmission-gtk             # Torrenting Frontend
      tree                         # A utility for visualizing directories
      unzip                        # Unzip Files
      upower                       # Part of udev Used for Reading Power
@@ -160,6 +161,8 @@
      wget                         # FTP Tool
      xclip                        # Patch for Clipboard Across X Programs
      zip                          # Zip tool
+     fpc
+     doxygen
   ];
 
   #########
@@ -174,5 +177,5 @@
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
 }
