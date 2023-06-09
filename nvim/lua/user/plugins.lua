@@ -34,6 +34,8 @@ return packer.startup(function(use)
     -- package manager
     use "wbthomason/packer.nvim"            -- Have packer manage itself
 
+    use "elixir-editors/vim-elixir"
+
     -- A lot of other plugins need these
     use "nvim-lua/popup.nvim"               -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim"             -- Useful lua functions used ny lots of plugins
@@ -42,9 +44,13 @@ return packer.startup(function(use)
     use "mg979/vim-visual-multi"            -- <C-n> multiple cursors
 
     -- colorscheme I like
-    use "NLKNguyen/papercolor-theme"        -- PaperColor Theme
+    use "EdenEast/nightfox.nvim"
+    -- use "pineapplegiant/spaceduck"        -- PaperColor Theme
+    -- use "NLKNguyen/papercolor-theme"        -- PaperColor Theme
     -- use "andreasvc/vim-256noir"             -- 256 Noir
     -- use "morhetz/gruvbox"
+
+    -- use "RRethy/vim-hexokinase"
     
     -- completion plugins
     use "hrsh7th/nvim-cmp"
@@ -56,6 +62,9 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip"
     use "rafamadriz/friendly-snippets"
     use "saadparwaiz1/cmp_luasnip" -- ??? but it makes it work ig
+
+    use "nvim-telescope/telescope.nvim"
+    use "bluz71/vim-nightfly-guicolors"
 
     -- tab bar stuff
     -- use {

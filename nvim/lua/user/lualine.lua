@@ -1,15 +1,13 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    -- theme = '16color', -- PantherLikeAPanther
-    theme = 'PaperColor', -- Punk
     component_separators = { left = '', right = ''},
-    --section_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    --section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     
     disabled_filetypes = {},
     always_divide_middle = true,
+    -- theme = 'papercolor_dark'
+    theme = 'nightfox'
   },
   sections = {
     lualine_a = {'mode'},

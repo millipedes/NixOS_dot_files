@@ -30,8 +30,14 @@ keymap("n", "<A-Down>", ":resize +2<CR>", opts)
 keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 
+keymap("n", "<leader>t", "<Esc>:vsplit<CR><Esc>:terminal<CR>", opts)
+keymap("t", "<leader>e", "<C-\\><C-n>", opts)
+
 -- Open all tabs
 keymap("n", "<leader>o", "<Esc>:tab all<CR>", opts)
+
+keymap("n", "<C-s>", "<Esc>:w<CR>", opts)
+keymap("n", "<C-z>", "<Esc>:w<CR>", opts)
 
 -- tab prev/next
 keymap("n", "<leader>a", "<Esc>:tabprevious<CR>", opts)
@@ -39,6 +45,11 @@ keymap("n", "<leader>s", "<Esc>:tabnext<CR>", opts)
 keymap("n", "<C-PageUp>", "<Esc>:tabprevious<CR>", opts)
 keymap("n", "<C-PageDown>", "<Esc>:tabnext<CR>", opts)
 keymap("n", "<leader>w", "<ESC>:tabClose<CR>", opts)
+keymap("n", "<A-PageUp>", "<ESC>:-tabmove<CR>", opts)
+keymap("n", "<A-PageDown>", "<ESC>:+tabmove<CR>", opts)
+
+-- Telescope
+-- keymap("n", "<leader>t", "<Esc>:Telescope find_files<CR>", loud_opts)
 
 -- Spellcheck on/off
 keymap("n", "<leader>c", "<Esc>:set spell spelllang=en_us<CR>", opts)
@@ -46,8 +57,9 @@ keymap("n", "<leader>n", "<Esc>:set nospell<CR>", opts)
 
 -- Quickly get into vsplit
 keymap("n", "<leader>v", "<Esc>:vsplit ", loud_opts)
+keymap("n", "<leader>b", "<Esc>:tabnew ", loud_opts)
 
--- Quickly get into vsplit
+-- Make
 keymap("n", "<leader>m", "<Esc>:w<CR><Esc>:make<CR><CR>", opts)
 
 keymap("n", ",e", "<Esc>:Lex 20<CR>", opts)
