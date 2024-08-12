@@ -41,6 +41,7 @@ source ~/.config/bash_scripts/functions/c_project.sh
 source ~/.config/bash_scripts/functions/c_object.sh
 source ~/.config/bash_scripts/functions/simple_latex.sh
 source ~/.config/bash_scripts/functions/grs.sh
+source ~/.config/bash_scripts/functions/lines_in_dir.sh
 #---------------------------------------------------------------
 
 # My C program for Easy Loading Terminal Art
