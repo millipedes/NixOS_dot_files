@@ -44,7 +44,7 @@ return packer.startup(function(use)
     use "mg979/vim-visual-multi"            -- <C-n> multiple cursors
 
     -- colorscheme I like
-    use "EdenEast/nightfox.nvim"
+    use "millipedes/spaceduck"
     -- use "pineapplegiant/spaceduck"        -- PaperColor Theme
     -- use "NLKNguyen/papercolor-theme"        -- PaperColor Theme
     -- use "andreasvc/vim-256noir"             -- 256 Noir

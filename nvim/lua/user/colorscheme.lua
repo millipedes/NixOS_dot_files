@@ -1,5 +1,5 @@
 -- Lua CS's local colorscheme = "moonfly"
-vim.cmd [[colorscheme nightfox]]
+vim.cmd [[colorscheme spaceduck]]
 -- vim.g.spaceduckTransparent = 1
 vim.cmd [[hi Normal ctermbg=NONE guibg=NONE]]
 vim.cmd [[hi Nontext ctermbg=NONE guibg=NONE]]

@@ -7,7 +7,7 @@ require('lualine').setup {
     disabled_filetypes = {},
     always_divide_middle = true,
     -- theme = 'papercolor_dark'
-    theme = 'nightfox'
+    theme = 'spaceduck'
   },
   sections = {
     lualine_a = {'mode'},
